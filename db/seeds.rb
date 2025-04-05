@@ -1,3 +1,5 @@
+# typed: strict
+
 require 'ffaker'
 
 equipment =[]
