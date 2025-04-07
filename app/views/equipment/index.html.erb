@@ -1,0 +1,33 @@
+<div class="w-full">
+  <table class="w-full divide-y-2 divide-gray-200">
+    <thead class="ltr:text-left rtl:text-right">
+      <tr class="font-medium text-gray-900">
+        <th class="px-3 py-2 whitespace-nowrap">Article Number</th>
+        <th class="px-3 py-2 whitespace-nowrap">Brand</th>
+        <th class="px-3 py-2 whitespace-nowrap">Model</th>
+        <th class="px-3 py-2 whitespace-nowrap">Color</th>
+        <th class="px-3 py-2 whitespace-nowrap">Size</th>
+        <th class="px-3 py-2 whitespace-nowrap">Material</th>
+        <th class="px-3 py-2 whitespace-nowrap">Weight</th>
+        <th class="px-3 py-2 whitespace-nowrap">Purpose</th>
+      </tr>
+    </thead>
+
+    <tbody class="divide-y divide-gray-200">
+      <% @equipment.each do |e| %>
+        <tr>
+          <td class="text-blue-900 px-3 py-2 whitespace-nowrap">
+            <%= link_to(e.article_number, equipment_path(e.storable_id)) %>
+          </td>
+          <td class="px-3 py-2 whitespace-nowrap"><%= e.brand %></td>
+          <td class="px-3 py-2 whitespace-nowrap"><%= e.model %></td>
+          <td class="px-3 py-2 whitespace-nowrap"><%= e.color %></td>
+          <td class="px-3 py-2 whitespace-nowrap"><%= e.size %></td>
+          <td class="px-3 py-2 whitespace-nowrap"><%= e.material %></td>
+          <td class="px-3 py-2 whitespace-nowrap"><%= e.weight %></td>
+          <td class="px-3 py-2 whitespace-nowrap"><%= e.purpose %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
