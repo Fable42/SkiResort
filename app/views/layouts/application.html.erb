@@ -5,11 +5,36 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="flex">
+    <div class="flex text-gray-800">
+      <div class="fixed flex flex-col top-0 left-0 w-64 bg-white h-full border border-gray-300">
+        <ul class="menu font-medium">
+          <li class="px-5">
+            <div class="flex flex-row items-center h-8">
+              <div class="text-sm font-light tracking-wide text-gray-500">Menu</div>
+            </div>
+          </li>
+          <li>
+            <%= link_to equipment_index_path, class: "relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-transparent hover:border-indigo-500 pr-6" do %>
+              <span class="inline-flex justify-center items-center ml-4">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+            </svg>            
+              </span>
+              <span class="ml-2 text-sm tracking-wide truncate">Equipment</span>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <main class="ml-64 w-full">
+      <%= yield %>
+    </main>
   </body>
 </html>
