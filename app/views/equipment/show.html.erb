@@ -1,0 +1,83 @@
+<div class="px-5 py-10 ml-5">
+  <div class="w-full">
+    <ul class="mt-5 gap-6 text-slate-700">
+      <li class="rounded-xl px-6 py-8 shadow-sm bg-neutral-50">
+        <h1 class="text-2xl text-black font-bold mb-4">Details</h1>
+        <table class="table-auto border-collapse border border-gray-300 w-100 mb-6 text-black">
+          <tbody>
+            <tr>
+              <th class="border border-gray-300 px-4 py-2 bg-gray-100 text-left">Brand</th>
+              <td class="border border-gray-300 px-4 py-2"><%= @equipment.brand %></td>
+            </tr>
+            <tr>
+              <th class="border border-gray-300 px-4 py-2 bg-gray-100 text-left">Model</th>
+              <td class="border border-gray-300 px-4 py-2"><%= @equipment.model %></td>
+            </tr>
+            <tr>
+              <th class="border border-gray-300 px-4 py-2 bg-gray-100 text-left">Size</th>
+              <td class="border border-gray-300 px-4 py-2"><%= @equipment.size %></td>
+            </tr>
+            <tr>
+              <th class="border border-gray-300 px-4 py-2 bg-gray-100 text-left">Color</th>
+              <td class="border border-gray-300 px-4 py-2"><%= @equipment.color %></td>
+            </tr>
+            <tr>
+              <th class="border border-gray-300 px-4 py-2 bg-gray-100 text-left">Weight (g)</th>
+              <td class="border border-gray-300 px-4 py-2"><%= @equipment.weight %></td>
+            </tr>
+            <tr>
+              <th class="border border-gray-300 px-4 py-2 bg-gray-100 text-left">Material</th>
+              <td class="border border-gray-300 px-4 py-2"><%= @equipment.material %></td>
+            </tr>
+            <tr>
+              <th class="border border-gray-300 px-4 py-2 bg-gray-100 text-left">Article Number</th>
+              <td class="border border-gray-300 px-4 py-2"><%= @equipment.article_number %></td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+
+      <li>
+        <table class="table-auto border-collapse border border-gray-300 w-100 mb-6 text-black">
+          <tbody>
+              <tr>
+                <th class="border border-gray-300 px-4 py-2 bg-gray-100 text-left">Ventilation Type</th>
+                <td class="border border-gray-300 px-4 py-2"><%= @equipment.storable.ventilation_type %></td>
+              </tr>
+              <tr>
+                <th class="border border-gray-300 px-4 py-2 bg-gray-100 text-left">Certifications</th>
+                <td class="border border-gray-300 px-4 py-2"><%= @equipment.storable.certifications %></td>
+              </tr>
+              <tr>
+                <th class="border border-gray-300 px-4 py-2 bg-gray-100 text-left">Audio Support</th>
+                <td class="border border-gray-300 px-4 py-2"><%= @equipment.storable.has_audio_support %></td>
+              </tr>
+          </tbody>
+        </table>
+      </li>
+
+      <li>
+      <table class="divide-y-2 divide-gray-200">
+        <thead class="ltr:text-left rtl:text-right">
+          <tr class="font-medium text-gray-900">
+            <th class="px-3 py-2 whitespace-nowrap">ID</th>
+            <th class="px-3 py-2 whitespace-nowrap">Location</th>
+            <th class="px-3 py-2 whitespace-nowrap">Status</th>
+            <th class="px-3 py-2 whitespace-nowrap">Condition</th>
+          </tr>
+        </thead>
+  
+      <tbody class="divide-y divide-gray-200">
+        <% @equipment.units.each do |u| %>
+          <tr>
+            <td class="text-blue-900 px-3 py-2 whitespace-nowrap"><%= u.id %></td>
+            <td class="px-3 py-2 whitespace-nowrap"><%= u.location %></td>
+            <td class="px-3 py-2 whitespace-nowrap"><%= u.rent_status %></td>
+            <td class="px-3 py-2 whitespace-nowrap"><%= u.condition %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </li>
+    </ul>
+  </div>
+<div>

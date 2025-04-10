@@ -42,12 +42,19 @@ equipment.each do |e|
     brand: FFaker::Company.name,
     model: "Model-#{rand(1000..9999)}",
     article_number: Array.new(10) { rand(36).to_s(36) }.join.upcase,
-    description: FFaker::Lorem.sentence,
     material: %w[Plastic Metal Wood].sample,
     weight: rand(1..10),
     purpose: %w[Skiing Snowboarding].sample
   )
 end
 
+equipment.each do |e|
+  EquipmentUnit.create!(
+    location: "Warehouse A",
+    rent_status: %w[Available Rented Reserved].sample,
+    condition: %w[New Used Damaged].sample,
+    equipment_id: e.id
+  )
+end
 
 puts "Seeding complete!"

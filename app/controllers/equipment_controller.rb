@@ -1,5 +1,9 @@
 class EquipmentController < ApplicationController
   def index
-    @equipment = Equipment.all.to_a
+    @equipment = EquipmentPresenter.new.equipment_attributes_list(Equipment.all)
+  end
+
+  def show
+    @equipment = Equipment.preload(:storable, :units).find(params[:id])
   end
 end
