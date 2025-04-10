@@ -3,8 +3,9 @@
 require 'ffaker'
 
 equipment =[]
+storable =[]
 5.times do
-  equipment << Helmet.create!(
+  storable << Helmet.create!(
     ventilation_type: %w[Passive Active].sample,
     has_audio_support: [true, false].sample,
     certifications: "ASTM #{rand(100..500)}",
@@ -12,7 +13,7 @@ equipment =[]
 end
 
 5.times do
-  equipment << Ski.create!(
+  storable << Ski.create!(
     sidecut_radius: rand(10.0..25.0).round(2),
     waist_width: rand(70..100),
     binding_type: %w[Fixed Adjustable].sample,
@@ -24,7 +25,7 @@ end
 end
 
 5.times do
-  equipment << Snowboard.create!(
+  storable << Snowboard.create!(
     shape: %w[Directional Twin Hybrid].sample,
     flex: %w[Soft Medium Stiff].sample,
     profile: %w[Camber Rocker Flat].sample,
@@ -33,8 +34,8 @@ end
   )
 end
 
-equipment.each do |e|
-  Equipment.create!(
+storable.each do |e|
+  equipment << Equipment.create!(
     storable_type: e.class.name,
     storable_id: e.id,
     size: %w[Small Medium Large].sample,
@@ -49,11 +50,10 @@ equipment.each do |e|
 end
 
 equipment.each do |e|
-  EquipmentUnit.create!(
+  e.units.create!(
     location: "Warehouse A",
     rent_status: %w[Available Rented Reserved].sample,
-    condition: %w[New Used Damaged].sample,
-    equipment_id: e.id
+    condition: %w[New Used Damaged].sample
   )
 end
 

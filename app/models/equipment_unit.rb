@@ -1,5 +1,5 @@
 # typed: strict
 
 class EquipmentUnit < ApplicationRecord
-  has_one :equipment
+  belongs_to :equipment, counter_cache: :units_count
 end

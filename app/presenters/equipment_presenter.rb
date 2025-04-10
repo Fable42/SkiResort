@@ -14,6 +14,7 @@ class EquipmentPresenter
     const :material, String
     const :weight, Integer
     const :purpose, String
+    const :units_count, T.nilable(Integer)
   end
 
   def equipment_attributes_list(equipment_list)
@@ -33,7 +34,8 @@ class EquipmentPresenter
       size: equipment.size,
       material: equipment.material,
       weight: equipment.weight,
-      purpose: equipment.purpose
+      purpose: equipment.purpose,
+      units_count: equipment.units_count
     )
   end
 end
