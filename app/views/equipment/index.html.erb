@@ -2,6 +2,7 @@
   <table class="w-full divide-y-2 divide-gray-200">
     <thead class="ltr:text-left rtl:text-right">
       <tr class="font-medium text-gray-900">
+        <th class="px-3 py-2 whitespace-nowrap">Type</th>
         <th class="px-3 py-2 whitespace-nowrap">Article Number</th>
         <th class="px-3 py-2 whitespace-nowrap">Brand</th>
         <th class="px-3 py-2 whitespace-nowrap">Model</th>
@@ -17,8 +18,9 @@
       <% @equipment.each do |e| %>
         <tr>
           <td class="text-blue-900 px-3 py-2 whitespace-nowrap">
-            <%= link_to(e.article_number, equipment_path(e.storable_id)) %>
+            <%= link_to(e.article_number, equipment_path(e.id)) %>
           </td>
+          <td class="px-3 py-2 whitespace-nowrap"><%= e.type %></td>
           <td class="px-3 py-2 whitespace-nowrap"><%= e.brand %></td>
           <td class="px-3 py-2 whitespace-nowrap"><%= e.model %></td>
           <td class="px-3 py-2 whitespace-nowrap"><%= e.color %></td>
