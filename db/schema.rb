@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_04_05_192006) do
+ActiveRecord::Schema[7.1].define(version: 2025_04_10_171333) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,12 +22,21 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_05_192006) do
     t.string "brand", null: false
     t.string "model", null: false
     t.string "article_number", null: false
-    t.text "description", null: false
     t.string "material", null: false
     t.integer "weight", null: false
     t.string "purpose", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "equipment_units", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "location", null: false
+    t.string "rent_status", null: false
+    t.string "condition", null: false
+    t.bigint "equipment_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["equipment_id"], name: "index_equipment_units_on_equipment_id"
   end
 
   create_table "helmets", force: :cascade do |t|
