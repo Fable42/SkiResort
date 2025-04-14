@@ -1,0 +1,8 @@
+<div> Api Keys </div>
+
+<% @api_keys.each do |key| %>
+  <div> <%= key.id  %> </div>
+  <div class="mb-5"> <%= "#{key.type_prefix}#{key.random_prefix}#{"•"*30}"%> </div>
+<% end %>
+
+<%= button_to "Generate New Api Token", api_keys_path %>

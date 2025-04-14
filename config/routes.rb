@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :equipment, only: [:index, :show]
+  resources :api_keys, only: [:index, :create]
 end
