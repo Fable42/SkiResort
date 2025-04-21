@@ -4,7 +4,7 @@ class ApiKeysController < ApplicationController
   end
 
   def create
-    ::ApiKeys::GenerateService.new.call
+    ApiKeys::GenerationService.new.generate_new_token
 
     redirect_to api_keys_path
   end

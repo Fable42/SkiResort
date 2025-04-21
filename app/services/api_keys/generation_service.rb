@@ -1,6 +1,6 @@
 module ApiKeys
-  class GenerateService
-    def call
+  class GenerationService
+    def generate_new_token
       key = ApiKey.new
 
       key.type_prefix = "#{ApiKey::TOKEN_NAMESPACE}_test_"
@@ -13,9 +13,13 @@ module ApiKeys
       ].join("")
 
       key.raw_value = new_token
-      key.token = OpenSSL::HMAC.hexdigest("SHA256", ApiKey::HMAC_SECRET_KEY, new_token)
-      
+      key.token = generate_digest(new_token)
+
       key.save
+    end
+
+    def generate_digest(token)
+      OpenSSL::HMAC.hexdigest("SHA256", ApiKey::HMAC_SECRET_KEY, token)
     end
   end
 end
