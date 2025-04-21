@@ -10,4 +10,10 @@ Rails.application.routes.draw do
 
   resources :equipment, only: [:index, :show]
   resources :api_keys, only: [:index, :create]
+
+  namespace :api do
+    namespace :v1 do
+      resource :api_key, only: [:show]
+    end
+  end
 end
