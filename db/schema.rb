@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_04_12_212717) do
+ActiveRecord::Schema[7.1].define(version: 2025_04_26_074536) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_12_212717) do
     t.index ["equipment_id"], name: "index_equipment_units_on_equipment_id"
   end
 
+  create_table "geo_positions", force: :cascade do |t|
+    t.decimal "latitude", precision: 10, scale: 6, null: false
+    t.decimal "longitude", precision: 10, scale: 6, null: false
+    t.uuid "equipment_unit_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["equipment_unit_id"], name: "index_geo_positions_on_equipment_unit_id"
+  end
+
   create_table "helmets", force: :cascade do |t|
     t.string "ventilation_type", null: false
     t.boolean "has_audio_support", null: false
@@ -81,4 +90,5 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_12_212717) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "geo_positions", "equipment_units"
 end
