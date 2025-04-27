@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resource :api_key, only: [:show]
+      resource :geo_position, only: [:create]
     end
   end
 end
