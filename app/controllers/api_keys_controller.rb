@@ -4,8 +4,12 @@ class ApiKeysController < ApplicationController
   end
 
   def create
-    ApiKeys::GenerationService.new.generate_new_token
+    new_token_value = ApiKeys::GenerationService.new.generate_new_token
 
-    redirect_to api_keys_path
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace("api_keys_table", partial: "api_keys/api_keys_table", locals: { api_keys: ApiKey.all, new_token_value: })
+      end
+    end
   end
 end

@@ -16,6 +16,8 @@ module ApiKeys
       key.token = generate_digest(new_token)
 
       key.save
+
+      new_token
     end
 
     def generate_digest(token)

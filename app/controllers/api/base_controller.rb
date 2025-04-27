@@ -9,7 +9,6 @@ module Api
     private
 
     def authenticate_with_api_key
-
       authenticate_or_request_with_http_token do |token, options|
         token = ApiKeys::GenerationService.new.generate_digest(token)
         @current_api_key = ApiKey.find_by(token:)
